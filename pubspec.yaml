@@ -10,6 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.8
+  encrypt: ^5.0.1
+  pointycastle: ^3.5.0
 
   # Firebase Dependencies
   firebase_core: ^2.15.0

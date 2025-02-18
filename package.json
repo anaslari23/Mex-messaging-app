@@ -1,41 +1,4 @@
 {
-  "dependencies": {
-    "@prisma/client": "^6.3.1",
-    "bcryptjs": "^3.0.1",
-    "next-auth": "^4.24.11",
-    "socket.io": "^4.8.1"
-  },
-  "devDependencies": {
-    "@types/bcryptjs": "^2.4.6",
-    "@types/node": "^22.13.4",
-    "prisma": "^6.3.1",
-    "typescript": "^5.7.3"
-  },
-  "name": "mex_app",
-  "version": "1.0.0",
-  "description": "A new Flutter project.",
-  "main": "index.js",
-  "directories": {
-    "lib": "lib",
-    "test": "test"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/anaslari23/Mex-messaging-app.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/anaslari23/Mex-messaging-app/issues"
-  },
-  "homepage": "https://github.com/anaslari23/Mex-messaging-app#readme"
-}
-{
   "name": "mex_app",
   "version": "1.0.0",
   "description": "Mex messaging app backend",
@@ -52,6 +15,7 @@
   "dependencies": {
     "@prisma/client": "^5.0.0",
     "bcryptjs": "^2.4.3",
+    "libsodium-wrappers": "^0.7.15",
     "next": "^13.4.10",
     "next-auth": "^4.22.1",
     "react": "^18.2.0",
