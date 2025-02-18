@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  username      String    @unique
+  passwordHash  String
+  name          String?
+  avatar        String?
+  status        String?
+  lastSeen      DateTime  @default(now())
+  publicKey     String    
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  sentMessages     Message[]  @relation("SentMessages")
+  receivedMessages Message[]  @relation("ReceivedMessages")
+  groups           Group[]    @relation("GroupMembers")
+  ownedGroups      Group[]    @relation("GroupOwner")
+  contacts         User[]     @relation("UserContacts")
+  contactOf        User[]     @relation("UserContacts")
+}
+
+model Message {
+  id          String    @id @default(cuid())
+  content     String    
+  type        String    @default("TEXT")
+  metadata    Json?     
+  senderId    String
+  receiverId  String?
+  groupId     String?
+  readAt      DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  sender      User      @relation("SentMessages", fields: [senderId], references: [id])
+  receiver    User?     @relation("ReceivedMessages", fields: [receiverId], references: [id])
+  group       Group?    @relation(fields: [groupId], references: [id])
+}
+
+model Group {
+  id          String    @id @default(cuid())
+  name        String
+  avatar      String?
+  ownerId     String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  owner       User      @relation("GroupOwner", fields: [ownerId], references: [id])
+  members     User[]    @relation("GroupMembers")
+  messages    Message[]
+}
